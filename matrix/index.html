@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Matrix</title>
+    <meta charset="utf-8">
+    <link href="Matrix.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Automatic Matrix Solver</h1>
+        <h2>by FIGBERT</h2>
+    </header>
+    <main>
+        <form>
+            <fieldset>
+                <legend>Pick the matrix format</legend>
+                <label for="two"><input id="two" type="radio" name="eqSet" value="2">Two equations, two variables</label><br>
+                <label for="three"><input id="three" type="radio" name="eqSet" value="3">Three equations, three variables</label><br>
+                <label for="four"><input id="four" type="radio" name="eqSet" value="4">Four equations, four variables</label><br>
+                <input type="button" value="Set" onclick="setUp(eqSet.value)">
+            </fieldset>
+            <fieldset id="equations">
+                <legend>Pick the matrix values</legend>
+                <div>
+                    <label for="wOne" class="w"><input id="wOne" type="number" name="setOne" class="numSet w a" step="0.01">w</label>
+                    <label for="xOne"><input id="xOne" type="number" name="setOne" class="numSet a" step="0.01">x</label>
+                    <label for="yOne"><input id="yOne" type="number" name="setOne" class="numSet a" step="0.01">y</label>
+                    <label for="zOne" class="z"><input id="zOne" type="number" name="setOne" class="numSet z a" step="0.01">z</label>
+                    <label for="equalsOne">=<input id="equalsOne" type="number" name="setOne" class="numSet a" step="0.01"></label>
+                </div>
+                <div>
+                    <label for="wTwo" class="w"><input id="wTwo" type="number" name="setTwo" class="numSet w a" step="0.01">w</label>
+                    <label for="xTwo"><input id="xTwo" type="number" name="setTwo" class="numSet a" step="0.01">x</label>
+                    <label for="yTwo"><input id="yTwo" type="number" name="setTwo" class="numSet a" step="0.01">y</label>
+                    <label for="zTwo" class="z"><input id="zTwo" type="number" name="setTwo" class="numSet z a" step="0.01">z</label>
+                    <label for="equalsTwo">=<input id="equalsTwo" type="number" name="setTwo" class="numSet a" step="0.01"></label>
+                </div>
+                <div id="thirdEquation">
+                    <label for="wThree" class="w"><input id="wThree" type="number" name="setThree" class="numSet w a" step="0.01">w</label>
+                    <label for="xThree"><input id="xThree" type="number" name="setThree" class="numSet a" step="0.01">x</label>
+                    <label for="yThree"><input id="yThree" type="number" name="setThree" class="numSet a" step="0.01">y</label>
+                    <label for="zThree" class="z"><input id="zThree" type="number" name="setThree" class="numSet z a" step="0.01">z</label>
+                    <label for="equalsThree">=<input id="equalsThree" type="number" name="setThree" class="numSet a" step="0.01"></label>
+                </div>
+                <div id="fourthEquation">
+                    <label for="wFour" class="w"><input id="wFour" type="number" name="setFour" class="numSet w a" step="0.01">w</label>
+                    <label for="xFour"><input id="xFour" type="number" name="setFour" class="numSet a" step="0.01">x</label>
+                    <label for="yFour"><input id="yFour" type="number" name="setFour" class="numSet a" step="0.01">y</label>
+                    <label for="zFour" class="z"><input id="zFour" type="number" name="setFour" class="numSet z a" step="0.01">z</label>
+                    <label for="equalsFour">=<input id="equalsFour" type="number" name="setFour" class="numSet a" step="0.01"></label>
+                </div>
+                <input type="button" value="Solve" onclick="solve(eqSet.value)">
+            </fieldset>
+        </form>
+        <div id="out">
+            <h3 id="titleOne">First Line:</h3>
+            <p id="outOne"></p>
+            <h3 id="titleTwo">Second Line:</h3>
+            <p id="outTwo"></p>
+            <h3 id="titleThree">Third Line:</h3>
+            <p id="outThree"></p>
+            <h3 id="titleFour">Fourth Line:</h3>
+            <p id="outFour"></p>
+        </div>
+    </main>
+    <script src="matrixBeta.js"></script>
+</body>
