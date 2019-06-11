@@ -75,7 +75,7 @@ function setUp(num) {
     }
 }
 
-//answerTwo() accepts two simplified equations as input and outputs the x and y value
+//answerTwo() accepts two simplified equations as input and outputs the x and y values
 function answerTwo(one, two) {
     var
         y = two[2] / two[1],
@@ -83,13 +83,23 @@ function answerTwo(one, two) {
     return [x, y];
 }
 
-//answerThree() accepts three simplified equations as input and outputs the x, y, and z value
+//answerThree() accepts three simplified equations as input and outputs the x, y, and z values
 function answerThree(one, two, three) {
     var
         z = three[3] / three[2],
         y = (two[3] - (two[2] * z)) / two[1],
         x = (one[3] - ((one[2] * z) + (one[1] * y))) / one[0];
     return [x, y, z];
+}
+
+//answerFour() accepts four simplified equations as input and outputs the w, x, y, and z values
+function answerFour(one, two, three, four) {
+    var
+        z = four[4] / four[3],
+        y = (three[4] - (three[3] * z)) / three[2],
+        x = (two[4] - ((two[3] * z) + (two[2] * y))) / two[1],
+        w = (one[4] - ((one[3] * z) + (one[2] * y) + (one[1] * x))) / one[0];
+    return [w, x, y, z];
 }
 
 //solveTwo() accepts two equations as input and simplifies the second
@@ -158,8 +168,8 @@ function solveFour(one, two, three, four) {
         multThree = lcm(changingThree[2], simpleFour[2]) / changingThree[2],
         secondMultFour = lcm(changingThree[2], simpleFour[2]) / simpleFour[2];
     for (var c = 0; c < simpleFour.length; c++) {
-        changingThree *= multThree;
-        simpleFour *= secondMultFour;
+        changingThree[c] *= multThree;
+        simpleFour[c] *= secondMultFour;
     }
     if (simpleFour[2] + changingThree[2] !== 0) {
         invert(changingThree);
@@ -167,7 +177,7 @@ function solveFour(one, two, three, four) {
     for (var d = 0; d < simpleFour.length; d++) {
         simpleFour[d] += changingThree[d];
     }
-    return [one, simpleTwoThree[0], simpleTwoThree[1], simpleFour];
+    return [simpleTwoThree[0], simpleTwoThree[1], simpleFour];
 }
 
 //solve() uses a combination of other functions to simplify the matrix
@@ -206,8 +216,18 @@ function solve(dimension) {
             firstWXYZ = [parseInt(document.getElementById("wOne").value), parseInt(document.getElementById("xOne").value), parseInt(document.getElementById("yOne").value), parseInt(document.getElementById("zOne").value), parseInt(document.getElementById("equalsOne").value)],
             secondWXYZ = [parseInt(document.getElementById("wTwo").value), parseInt(document.getElementById("xTwo").value), parseInt(document.getElementById("yTwo").value), parseInt(document.getElementById("zTwo").value), parseInt(document.getElementById("equalsTwo").value)],
             thirdWXYZ = [parseInt(document.getElementById("wThree").value), parseInt(document.getElementById("xThree").value), parseInt(document.getElementById("yThree").value), parseInt(document.getElementById("zThree").value), parseInt(document.getElementById("equalsThree").value)],
-            fourthWXYZ = [parseInt(document.getElementById("wFour").value), parseInt(document.getElementById("xFour").value), parseInt(document.getElementById("yFour").value), parseInt(document.getElementById("zFour").value), parseInt(document.getElementById("equalsFour").value)];
-        console.log(solveFour(firstWXYZ, secondWXYZ, thirdWXYZ, fourthWXYZ));
+            fourthWXYZ = [parseInt(document.getElementById("wFour").value), parseInt(document.getElementById("xFour").value), parseInt(document.getElementById("yFour").value), parseInt(document.getElementById("zFour").value), parseInt(document.getElementById("equalsFour").value)],
+            answerWXYZ = solveFour(firstWXYZ, secondWXYZ, thirdWXYZ, fourthWXYZ),
+            valuesWXYZ = answerFour(firstWXYZ, answerWXYZ[0], answerWXYZ[1], answerWXYZ[2]);
+        show([document.getElementById("out")]);
+        document.getElementById("outOne").innerHTML = "[" + firstWXYZ[0] + ", " + firstWXYZ[1] + ", " + firstWXYZ[2] + ", " + firstWXYZ[3] + ", " + firstWXYZ[4] + "]";
+        document.getElementById("outTwo").innerHTML = "[" + answerWXYZ[0][0] + ", " + answerWXYZ[0][1] + ", " + answerWXYZ[0][2] + ", " + answerWXYZ[0][3] + ", " + answerWXYZ[0][4] + "]";
+        document.getElementById("outThree").innerHTML = "[" + answerWXYZ[1][0] + ", " + answerWXYZ[1][1] + ", " + answerWXYZ[1][2] + ", " + answerWXYZ[1][3] + ", " + answerWXYZ[1][4] + "]";
+        document.getElementById("outFour").innerHTML = "[" + answerWXYZ[2][0] + ", " + answerWXYZ[2][1] + ", " + answerWXYZ[2][2] + ", " + answerWXYZ[2][3] + ", " + answerWXYZ[2][4] + "]";
+        document.getElementById("wValue").innerHTML = "w = " + valuesWXYZ[0];
+        document.getElementById("xValue").innerHTML = "x = " + valuesWXYZ[1];
+        document.getElementById("yValue").innerHTML = "y = " + valuesWXYZ[2];
+        document.getElementById("zValue").innerHTML = "z = " + valuesWXYZ[3];
     }
 }
     
