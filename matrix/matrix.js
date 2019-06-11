@@ -20,24 +20,24 @@ function invert(value) {
 //hide() hides arrayed html elements using the "display: none" method and a for loop
 function hide(elements) {
     "use strict";
-    for (var a = 0; a < elements.length; a++) {
-        elements[a].style.display = "none";
+    for (var b = 0; b < elements.length; b++) {
+        elements[b].style.display = "none";
     }
 }
 
 //reset() clears html number inputs by setting their value to null
 function reset(elements) {
     "use strict";
-    for (var a = 0; a < elements.length; a++) {
-        elements[a].value = null;
+    for (var c = 0; c < elements.length; c++) {
+        elements[c].value = null;
     }
 }
 
 //show() shows arrayed html elements INLINE using a for loop
 function show(elements) {
     "use strict";
-    for (var a = 0; a < elements.length; a++) {
-        elements[a].style.display = "inline";
+    for (var d = 0; d < elements.length; d++) {
+        elements[d].style.display = "inline";
     }
 }
 
@@ -83,76 +83,91 @@ function answerTwo(one, two) {
     return [x, y];
 }
 
-//solveTwo() accepts the first two equations as input and solves the second
-function solveTwo(one, two, dimension) {
-    "use strict";
-    if (dimension == 2){
-        var
-            multOneXY = lcm(one[0], two[0]) / one[0],
-            multTwoXY = lcm(one[0], two[0]) / two[0],
-            changingOneXY = [one[0], one[1], one[2]];
-        for (var a = 0; a < two.length; a++) {
-            changingOneXY[a] = changingOneXY[a] * multOneXY;
-            two[a] = two[a] * multTwoXY;
-        }
-        if (changingOneXY[0] + two[0] !== 0) {
-            invert(changingOneXY);
-        }
-        for (var b = 0; b < two.length; b++) {
-            two[b] = changingOneXY[b] + two[b];
-        }
-        return two;
-    } else if (dimension == 3) {
-        var
-            multOneXYZ = lcm(one[0], two[0]) / one[0],
-            multTwoXYZ = lcm(one[0], two[0]) / two[0],
-            changingOneXYZ = [one[0], one[1], one[2], one[3]];
-        for (var c = 0; c < two.length; c++) {
-            changingOneXYZ[c] = changingOneXYZ[c] * multOneXYZ;
-            two[c] = two[c] * multTwoXYZ;
-        }
-        if (changingOneXYZ[0] + two[0] !== 0) {
-            invert(changingOneXYZ);
-        }
-        for (var d = 0; d < two.length; d++) {
-            two[d] = changingOneXYZ[d] + two[d];
-        }
-        return two;
-    }
+//answerThree() accepts three simplified equations as input and outputs the x, y, and z value
+function answerThree(one, two, three) {
+    var
+        z = three[3] / three[2],
+        y = (two[3] - (two[2] * z)) / two[1],
+        x = (one[3] - ((one[2] * z) + (one[1] * y))) / one[0];
+    return [x, y, z];
 }
 
-//solveThree() accepts the first three equations as input and solves the second
-function solveThree(one, two, three, dimension) {
+//solveTwo() accepts two equations as input and simplifies the second
+function solveTwo(one, two) {
     "use strict";
     var
-        multOne = lcm(one[0], three[0]) / one[0],
-        multThree = lcm(one[0], three[0]) / three[0],
-        changingOne = [one[0], one[1], one[2], one[3]],
-        simpleTwo = solveTwo(one, two, dimension);
-    for (var a = 0; a < three.length; a++) {
-        changingOne[a] = changingOne[a] * multOne;
-        three[a] = three[a] * multThree;
+        multOne = lcm(one[0], two[0]) / one[0],
+        multTwo = lcm(one[0], two[0]) / two[0],
+        changingOne = one.slice();
+    for (var e = 0; e < two.length; e++) {
+        changingOne[e] *= multOne;
+        two[e] *= multTwo;
     }
-    if (changingOne[0] + three[0] !== 0) {
+    if (changingOne[0] + two[0] !== 0) {
         invert(changingOne);
     }
-    for (var b = 0; b < three.length; b++) {
-        three[b] = changingOne[b] + three[b];
+    for (var f = 0; f < two.length; f++) {
+        two[f] += changingOne[f];
+    }
+    return two;
+}
+
+//solveThree() accepts three equations as input and outputs the simplified second and third
+function solveThree(one, two, three) {
+    "use strict";
+    var
+        simpleTwo = solveTwo(one, two),
+        simpleThree = solveTwo(one, three),
+        multTwo = lcm(simpleTwo[1], simpleThree[1]) / simpleTwo[1],
+        multThree = lcm(simpleTwo[1], simpleThree[1]) / simpleThree[1],
+        changingTwo = simpleTwo.slice();
+    for (var g = 0; g < simpleThree.length; g++) {
+        changingTwo[g] *= multTwo;
+        simpleThree[g] *= multThree;
+    }
+    if (changingTwo[1] + simpleThree[1] !== 0) {
+        invert(changingTwo);
+    }
+    for (var h = 0; h < simpleThree.length; h++) {
+        simpleThree[h] += changingTwo[h];
+    }
+    return [simpleTwo, simpleThree];
+}
+
+//solveFour() accepts four equations as input and outputs the simplified second, third, and fourth
+function solveFour(one, two, three, four) {
+    "use strict";
+    var
+        simpleTwoThree = solveThree(one, two, three),
+        simpleFour = solveTwo(one, four),
+        changingTwo = simpleTwoThree[0],
+        changingThree = simpleTwoThree[1],
+        multTwo = lcm(changingTwo[1], simpleFour[1]) / changingTwo[1],
+        firstMultFour = lcm(changingTwo[1], simpleFour[1]) / simpleFour[1];
+    for (var a = 0; a < simpleFour.length; a++) {
+        simpleFour[a] *= firstMultFour;
+        changingTwo[a] *= multTwo;
+    }
+    if (simpleFour[1] + changingTwo[1] !== 0) {
+        invert(changingTwo);
+    }
+    for (var b = 0; b < simpleFour.length; b++) {
+        simpleFour[b] += changingTwo[b];
     }
     var
-        multTwo = lcm(simpleTwo[1] + three[1]) / simpleTwo[1],
-        subMultThree = lcm(simpleTwo[1] + three[1]) / three[1];
-    for (var c = 0; c < three.length; c++) {
-        simpleTwo[c] = simpleTwo[c] * multTwo;
-        three[c] = three[c] * subMultThree;
+        multThree = lcm(changingThree[2], simpleFour[2]) / changingThree[2],
+        secondMultFour = lcm(changingThree[2], simpleFour[2]) / simpleFour[2];
+    for (var c = 0; c < simpleFour.length; c++) {
+        changingThree *= multThree;
+        simpleFour *= secondMultFour;
     }
-    if (simpleTwo[1] + three[1] !== 0) {
-        invert(simpleTwo);
+    if (simpleFour[2] + changingThree[2] !== 0) {
+        invert(changingThree);
     }
-    for (var d = 0; d < three.length; d++) {
-        three[d] = three[d] + simpleTwo[d];
+    for (var d = 0; d < simpleFour.length; d++) {
+        simpleFour[d] += changingThree[d];
     }
-    return three;
+    return [one, simpleTwoThree[0], simpleTwoThree[1], simpleFour];
 }
 
 //solve() uses a combination of other functions to simplify the matrix
@@ -162,7 +177,7 @@ function solve(dimension) {
         var
             firstXY = [parseInt(document.getElementById("xOne").value), parseInt(document.getElementById("yOne").value), parseInt(document.getElementById("equalsOne").value)],
             secondXY = [parseInt(document.getElementById("xTwo").value), parseInt(document.getElementById("yTwo").value), parseInt(document.getElementById("equalsTwo").value)],
-            answerXY = solveTwo(firstXY, secondXY, dimension),
+            answerXY = solveTwo(firstXY, secondXY),
             valuesXY = answerTwo(firstXY, answerXY);
         show([document.getElementById("out")]);
         hide([document.getElementById("titleThree"), document.getElementById("outThree"), document.getElementById("titleFour"), document.getElementById("outFour"), document.getElementById("wValue"), document.getElementById("zValue")]);
@@ -174,7 +189,30 @@ function solve(dimension) {
         var
             firstXYZ = [parseInt(document.getElementById("xOne").value), parseInt(document.getElementById("yOne").value), parseInt(document.getElementById("zOne").value), parseInt(document.getElementById("equalsOne").value)],
             secondXYZ = [parseInt(document.getElementById("xTwo").value), parseInt(document.getElementById("yTwo").value), parseInt(document.getElementById("zTwo").value), parseInt(document.getElementById("equalsTwo").value)],
-            thirdXYZ = [parseInt(document.getElementById("xThree").value), parseInt(document.getElementById("yThree").value), parseInt(document.getElementById("zThree").value), parseInt(document.getElementById("equalsThree").value)];
-        console.log(solveThree(firstXYZ, secondXYZ, thirdXYZ, dimension));
+            thirdXYZ = [parseInt(document.getElementById("xThree").value), parseInt(document.getElementById("yThree").value), parseInt(document.getElementById("zThree").value), parseInt(document.getElementById("equalsThree").value)],
+            answerXYZ = solveThree(firstXYZ, secondXYZ, thirdXYZ),
+            valuesXYZ = answerThree(firstXYZ, answerXYZ[0], answerXYZ[1]);
+        show([document.getElementById("out"), document.getElementById("titleThree")]);
+        document.getElementById("outThree").style.display = "block";
+        hide([document.getElementById("titleFour"), document.getElementById("outFour"), document.getElementById("wValue")]);
+        document.getElementById("outOne").innerHTML = "[" + firstXYZ[0] + ", " + firstXYZ[1] + ", " + firstXYZ[2] + ", " + firstXYZ[3] + "]";
+        document.getElementById("outTwo").innerHTML = "[" + answerXYZ[0][0] + ", " + answerXYZ[0][1] + ", " + answerXYZ[0][2] + ", " + answerXYZ[0][3] + "]";
+        document.getElementById("outThree").innerHTML = "[" + answerXYZ[1][0] + ", " + answerXYZ[1][1] + ", " + answerXYZ[1][2] + ", " + answerXYZ[1][3] + "]";
+        document.getElementById("xValue").innerHTML = "x = " + valuesXYZ[0];
+        document.getElementById("yValue").innerHTML = "y = " + valuesXYZ[1];
+        document.getElementById("zValue").innerHTML = "z = " + valuesXYZ[2];
+    } else {
+        var
+            firstWXYZ = [parseInt(document.getElementById("wOne").value), parseInt(document.getElementById("xOne").value), parseInt(document.getElementById("yOne").value), parseInt(document.getElementById("zOne").value), parseInt(document.getElementById("equalsOne").value)],
+            secondWXYZ = [parseInt(document.getElementById("wTwo").value), parseInt(document.getElementById("xTwo").value), parseInt(document.getElementById("yTwo").value), parseInt(document.getElementById("zTwo").value), parseInt(document.getElementById("equalsTwo").value)],
+            thirdWXYZ = [parseInt(document.getElementById("wThree").value), parseInt(document.getElementById("xThree").value), parseInt(document.getElementById("yThree").value), parseInt(document.getElementById("zThree").value), parseInt(document.getElementById("equalsThree").value)],
+            fourthWXYZ = [parseInt(document.getElementById("wFour").value), parseInt(document.getElementById("xFour").value), parseInt(document.getElementById("yFour").value), parseInt(document.getElementById("zFour").value), parseInt(document.getElementById("equalsFour").value)];
+        console.log(solveFour(firstWXYZ, secondWXYZ, thirdWXYZ, fourthWXYZ));
     }
 }
+    
+/* FOR EXPANDABLE ALGORITHM
+
+Some form of repeating solveTwo() with a variable that detects the location of the last zero (in: [0,0,0,4,5] out: 2) and then finds the multiple and adds
+
+*/
