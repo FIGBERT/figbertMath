@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Matrix</title>
+        <title>FIGBERT Math - S.E.S.</title>
         <meta charset="utf-8">
         <link href="matrix.css" rel="stylesheet">
     </head>
@@ -18,7 +18,7 @@
                     <label for="two"><input id="two" type="radio" name="eqSet" value="2">Two equations, two variables</label><br>
                     <label for="three"><input id="three" type="radio" name="eqSet" value="3">Three equations, three variables</label><br>
                     <label for="four"><input id="four" type="radio" name="eqSet" value="4">Four equations, four variables</label><br>
-                    <input type="button" value="Set" onclick="setUp(eqSet.value)">
+                    <input type="button" value="Set" onclick="setUpMatrix(eqSet.value)">
                 </fieldset>
                 <fieldset id="equations">
                     <legend>Set the equation values</legend>
@@ -50,7 +50,7 @@
                         <label for="zFour" class="z"><input id="zFour" type="number" name="setFour" class="numSet z a" step="0.01">z</label>
                         <label for="equalsFour">=<input id="equalsFour" type="number" name="setFour" class="numSet a" step="0.01"></label>
                     </div>
-                    <input type="button" value="Solve" onclick="solve(eqSet.value)">
+                    <input type="button" value="Solve" onclick="solveMatrix(eqSet.value)">
                 </fieldset>
             </form>
             <div id="out">

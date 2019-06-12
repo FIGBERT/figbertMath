@@ -42,7 +42,7 @@ function show(elements) {
 }
 
 //setUp() will determine the number of equations and variables and adjust the html accordingly.
-function setUp(num) {
+function setUpMatrix(num) {
     "use strict";
     var
         allW = document.getElementsByClassName("w"),
@@ -102,8 +102,8 @@ function answerFour(one, two, three, four) {
     return [w, x, y, z];
 }
 
-//solveTwo() accepts two equations as input and simplifies the second
-function solveTwo(one, two) {
+//solveTwoMatrix() accepts two equations as input and simplifies the second
+function solveTwoMatrix(one, two) {
     "use strict";
     var
         multOne = lcm(one[0], two[0]) / one[0],
@@ -122,12 +122,12 @@ function solveTwo(one, two) {
     return two;
 }
 
-//solveThree() accepts three equations as input and outputs the simplified second and third
-function solveThree(one, two, three) {
+//solveThreeMatrix() accepts three equations as input and outputs the simplified second and third
+function solveThreeMatrix(one, two, three) {
     "use strict";
     var
-        simpleTwo = solveTwo(one, two),
-        simpleThree = solveTwo(one, three),
+        simpleTwo = solveTwoMatrix(one, two),
+        simpleThree = solveTwoMatrix(one, three),
         multTwo = lcm(simpleTwo[1], simpleThree[1]) / simpleTwo[1],
         multThree = lcm(simpleTwo[1], simpleThree[1]) / simpleThree[1],
         changingTwo = simpleTwo.slice();
@@ -144,12 +144,12 @@ function solveThree(one, two, three) {
     return [simpleTwo, simpleThree];
 }
 
-//solveFour() accepts four equations as input and outputs the simplified second, third, and fourth
-function solveFour(one, two, three, four) {
+//solveFourMatrix() accepts four equations as input and outputs the simplified second, third, and fourth
+function solveFourMatrix(one, two, three, four) {
     "use strict";
     var
-        simpleTwoThree = solveThree(one, two, three),
-        simpleFour = solveTwo(one, four),
+        simpleTwoThree = solveThreeMatrix(one, two, three),
+        simpleFour = solveTwoMatrix(one, four),
         changingTwo = simpleTwoThree[0],
         changingThree = simpleTwoThree[1],
         multTwo = lcm(changingTwo[1], simpleFour[1]) / changingTwo[1],
@@ -180,14 +180,14 @@ function solveFour(one, two, three, four) {
     return [simpleTwoThree[0], simpleTwoThree[1], simpleFour];
 }
 
-//solve() uses a combination of other functions to simplify the matrix
-function solve(dimension) {
+//solveMatrix() uses a combination of other functions to simplify the matrix
+function solveMatrix(dimension) {
     "use strict";
     if (dimension == 2) {
         var
             firstXY = [parseInt(document.getElementById("xOne").value), parseInt(document.getElementById("yOne").value), parseInt(document.getElementById("equalsOne").value)],
             secondXY = [parseInt(document.getElementById("xTwo").value), parseInt(document.getElementById("yTwo").value), parseInt(document.getElementById("equalsTwo").value)],
-            answerXY = solveTwo(firstXY, secondXY),
+            answerXY = solveTwoMatrix(firstXY, secondXY),
             valuesXY = answerTwo(firstXY, answerXY);
         show([document.getElementById("out")]);
         hide([document.getElementById("titleThree"), document.getElementById("outThree"), document.getElementById("titleFour"), document.getElementById("outFour"), document.getElementById("wValue"), document.getElementById("zValue")]);
@@ -200,7 +200,7 @@ function solve(dimension) {
             firstXYZ = [parseInt(document.getElementById("xOne").value), parseInt(document.getElementById("yOne").value), parseInt(document.getElementById("zOne").value), parseInt(document.getElementById("equalsOne").value)],
             secondXYZ = [parseInt(document.getElementById("xTwo").value), parseInt(document.getElementById("yTwo").value), parseInt(document.getElementById("zTwo").value), parseInt(document.getElementById("equalsTwo").value)],
             thirdXYZ = [parseInt(document.getElementById("xThree").value), parseInt(document.getElementById("yThree").value), parseInt(document.getElementById("zThree").value), parseInt(document.getElementById("equalsThree").value)],
-            answerXYZ = solveThree(firstXYZ, secondXYZ, thirdXYZ),
+            answerXYZ = solveThreeMatrix(firstXYZ, secondXYZ, thirdXYZ),
             valuesXYZ = answerThree(firstXYZ, answerXYZ[0], answerXYZ[1]);
         show([document.getElementById("out"), document.getElementById("titleThree")]);
         document.getElementById("outThree").style.display = "block";
@@ -217,7 +217,7 @@ function solve(dimension) {
             secondWXYZ = [parseInt(document.getElementById("wTwo").value), parseInt(document.getElementById("xTwo").value), parseInt(document.getElementById("yTwo").value), parseInt(document.getElementById("zTwo").value), parseInt(document.getElementById("equalsTwo").value)],
             thirdWXYZ = [parseInt(document.getElementById("wThree").value), parseInt(document.getElementById("xThree").value), parseInt(document.getElementById("yThree").value), parseInt(document.getElementById("zThree").value), parseInt(document.getElementById("equalsThree").value)],
             fourthWXYZ = [parseInt(document.getElementById("wFour").value), parseInt(document.getElementById("xFour").value), parseInt(document.getElementById("yFour").value), parseInt(document.getElementById("zFour").value), parseInt(document.getElementById("equalsFour").value)],
-            answerWXYZ = solveFour(firstWXYZ, secondWXYZ, thirdWXYZ, fourthWXYZ),
+            answerWXYZ = solveFourMatrix(firstWXYZ, secondWXYZ, thirdWXYZ, fourthWXYZ),
             valuesWXYZ = answerFour(firstWXYZ, answerWXYZ[0], answerWXYZ[1], answerWXYZ[2]);
         show([document.getElementById("out")]);
         document.getElementById("outOne").innerHTML = "[" + firstWXYZ[0] + ", " + firstWXYZ[1] + ", " + firstWXYZ[2] + ", " + firstWXYZ[3] + ", " + firstWXYZ[4] + "]";
@@ -233,6 +233,6 @@ function solve(dimension) {
     
 /* FOR EXPANDABLE ALGORITHM
 
-Some form of repeating solveTwo() with a variable that detects the location of the last zero (in: [0,0,0,4,5] out: 2) and then finds the multiple and adds
+Some form of repeating solveTwoMatrix() with a variable that detects the location of the last zero (in: [0,0,0,4,5] out: 2) and then finds the multiple and adds
 
 */
