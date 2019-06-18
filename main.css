@@ -47,9 +47,6 @@ footer {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
 ul {
@@ -58,4 +55,14 @@ ul {
 
 .programList {
     color: #ACA0B2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    height: 20%;
+}
+
+#programs {
+    display: flex;
+    flex-flow: row wrap;
 }
