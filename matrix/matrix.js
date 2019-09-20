@@ -230,9 +230,3 @@ function solveMatrix(dimension) {
         document.getElementById("zValue").innerHTML = "z = " + valuesWXYZ[3];
     }
 }
-    
-/* FOR EXPANDABLE ALGORITHM
-
-Some form of repeating solveTwoMatrix() with a variable that detects the location of the last zero (in: [0,0,0,4,5] out: 2) and then finds the multiple and adds
-
-*/
