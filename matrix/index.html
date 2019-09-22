@@ -20,7 +20,7 @@
                     <label for="four"><input id="four" type="radio" name="eqSet" value="4">Four equations, four variables</label><br>
                     <input type="button" value="Set" onclick="setUpMatrix(eqSet.value)">
                 </fieldset>
-                <fieldset id="equations">
+                <fieldset id="equations" class="hidden">
                     <legend>Set the equation values</legend>
                     <div>
                         <label for="wOne" class="w"><input id="wOne" type="number" name="setOne" class="numinput w a" step="0.01">w</label>
@@ -53,7 +53,7 @@
                     <input type="button" value="Solve" onclick="solveMatrix(eqSet.value)">
                 </fieldset>
             </form>
-            <div id="out">
+            <div id="out" class="hidden">
                 <h3 id="titleOne">First Line:</h3>
                 <p id="outOne"></p>
                 <h3 id="titleTwo">Second Line:</h3>
