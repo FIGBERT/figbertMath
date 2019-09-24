@@ -5,6 +5,7 @@
         <title>FIGBERT Math - C.N.F.</title>
         <meta charset="utf-8">
         <link href="../main.css" rel="stylesheet" type="text/css">
+        <script src="consecutiveNum.js" type="text/javascript" async></script>
     </head>
     <body>
         <header>
@@ -31,8 +32,10 @@
                     </fieldset>
                     <input type="button" value="Solve" onclick="solveConsec(numSet.value, sumSet.value, numType.value)" id="setButton">
                 </fieldset>
-                <h3>Output:</h3>
-                <p id="out"></p>
+                <div id="out">
+                    <h3>Output:</h3>
+                    <p id="outText"></p>
+                </div>
             </form>
         </main>
         <footer>
@@ -46,4 +49,3 @@
         </footer>
     </body>
 </html>
-<script src="consecutiveNum.js"></script>

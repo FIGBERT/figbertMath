@@ -17,14 +17,13 @@ function hide(elements) {
 function reset(elements) {
     "use strict";
     for (var a = 0; a < elements.length; a++) {
-        elements[a].value = "null";
+        elements[a].value = "";
     }
 }
 
 function setUp(selection) {
     "use strict";
     type = selection;
-    console.log(type);
     document.getElementById("sizeIn").style.display = "block";
     hide(document.getElementsByClassName("ins"));
     reset(document.getElementsByClassName("numinput"));
@@ -35,6 +34,7 @@ function setUp(selection) {
     } else {
         show(document.getElementsByClassName("d"));
     }
+    document.getElementById("out").style.display = "none";
 }
 
 function angularSize(size, distance) {
@@ -55,10 +55,19 @@ function calcDistance(size, angle) {
 function actionManager(angle, size, distance) {
     "use strict";
     if (type === "a") {
-        console.log(angularSize(size, distance));
+        document.getElementById("out").style.display = "block";
+        document.getElementById("numOut").innerHTML = "𝛼 = " + angularSize(size, distance);
     } else if (type === "D") {
-        console.log(realSize(angle, distance));
+        document.getElementById("out").style.display = "block";
+        document.getElementById("numOut").innerHTML = "D = " + realSize(angle, distance);
     } else {
-        console.log(calcDistance(size, angle));
+        document.getElementById("out").style.display = "block";
+        document.getElementById("numOut").innerHTML = "d = " + calcDistance(size, angle);
     }
 }
+/*
+Test values:
+𝛼 = 0.266513692671216
+D = 432168.6
+d = 92955810
+*/

@@ -3,7 +3,6 @@ function getSum(total, num) {
     return total + num;
 }
 
-//STOPPED AT K
 function solveConsec(amount, sum, type) {
     "use strict";
     var
@@ -26,9 +25,9 @@ function solveConsec(amount, sum, type) {
                 }
             }
             if (allNums.reduce(getSum) > numSum) {
-                document.getElementById("out").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values."
+                document.getElementById("outText").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values.";
             } else {
-                document.getElementById("out").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
+                document.getElementById("outText").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
             }
         } else if (numSum < 0) {
             smallestNum = -1;
@@ -43,9 +42,9 @@ function solveConsec(amount, sum, type) {
                 }
             }
             if (allNums.reduce(getSum) > numSum) {
-                document.getElementById("out").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values."
+                document.getElementById("outText").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values.";
             } else {
-                document.getElementById("out").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
+                document.getElementById("outText").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
             }
         }
         break;
@@ -62,9 +61,9 @@ function solveConsec(amount, sum, type) {
                 }
             }
             if (allNums.reduce(getSum) > numSum) {
-                document.getElementById("out").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values."
+                document.getElementById("outText").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values.";
             } else {
-                document.getElementById("out").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
+                document.getElementById("outText").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
             }
         } else if (numSum < 0) {
             var d = 0;
@@ -78,9 +77,9 @@ function solveConsec(amount, sum, type) {
                 }
             }
             if (allNums.reduce(getSum) > numSum) {
-                document.getElementById("out").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values."
+                document.getElementById("outText").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values.";
             } else {
-                document.getElementById("out").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
+                document.getElementById("outText").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
             }
         }
         break;
@@ -95,9 +94,9 @@ function solveConsec(amount, sum, type) {
                 }
             }
             if (allNums.reduce(getSum) > numSum) {
-                document.getElementById("out").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values."
+                document.getElementById("outText").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values.";
             } else {
-                document.getElementById("out").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
+                document.getElementById("outText").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
             }
         } else if (numSum < 0) {
             var i = 0;
@@ -111,11 +110,15 @@ function solveConsec(amount, sum, type) {
                 }
             }
             if (allNums.reduce(getSum) > numSum) {
-                document.getElementById("out").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values."
+                document.getElementById("outText").innerHTML = "Unfortunately, the combination entered does not have an answer. Try again with another set of values.";
             } else {
-                document.getElementById("out").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
+                document.getElementById("outText").innerHTML = "Success! The " + numAmount + " consecutive numbers that equal " + numSum + " are " + allNums + ".";
             }
         }
         break;
     }
 }
+/*
+Test values:
+4 consequtive even integers equal 100
+*/

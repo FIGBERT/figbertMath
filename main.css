@@ -60,6 +60,10 @@ main {
     display: none;
 }
 
+#out {
+    margin-left: 10px;
+}
+
 footer {
     font-size: calc(10px + 0.1vw);
     position: fixed;

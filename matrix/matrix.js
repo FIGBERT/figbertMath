@@ -48,7 +48,7 @@ function setUpMatrix(num) {
         allW = document.getElementsByClassName("w"),
         allZ = document.getElementsByClassName("z"),
         all = document.getElementsByClassName("a");
-    if (num == 2) {
+    if (num === "2") {
         document.getElementById("equations").style.display = "block";
         hide(allW);
         hide(allZ);
@@ -56,7 +56,7 @@ function setUpMatrix(num) {
         document.getElementById("thirdEquation").style.display = "none";
         document.getElementById("fourthEquation").style.display = "none";
         reset(all);
-    } else if (num == 3) {
+    } else if (num === "3") {
         document.getElementById("equations").style.display = "block";
         hide(allW);
         show(allZ);
@@ -77,6 +77,7 @@ function setUpMatrix(num) {
 
 //answerTwo() accepts two simplified equations as input and outputs the x and y values
 function answerTwo(one, two) {
+    "use strict";
     var
         y = two[2] / two[1],
         x = (one[2] - (one[1] * y)) / one[0];
@@ -85,6 +86,7 @@ function answerTwo(one, two) {
 
 //answerThree() accepts three simplified equations as input and outputs the x, y, and z values
 function answerThree(one, two, three) {
+    "use strict";
     var
         z = three[3] / three[2],
         y = (two[3] - (two[2] * z)) / two[1],
@@ -94,6 +96,7 @@ function answerThree(one, two, three) {
 
 //answerFour() accepts four simplified equations as input and outputs the w, x, y, and z values
 function answerFour(one, two, three, four) {
+    "use strict";
     var
         z = four[4] / four[3],
         y = (three[4] - (three[3] * z)) / three[2],
@@ -183,7 +186,7 @@ function solveFourMatrix(one, two, three, four) {
 //solveMatrix() uses a combination of other functions to simplify the matrix
 function solveMatrix(dimension) {
     "use strict";
-    if (dimension == 2) {
+    if (dimension === "2") {
         var
             firstXY = [parseInt(document.getElementById("xOne").value), parseInt(document.getElementById("yOne").value), parseInt(document.getElementById("equalsOne").value)],
             secondXY = [parseInt(document.getElementById("xTwo").value), parseInt(document.getElementById("yTwo").value), parseInt(document.getElementById("equalsTwo").value)],
@@ -195,7 +198,7 @@ function solveMatrix(dimension) {
         document.getElementById("outTwo").innerHTML = "[" + answerXY[0] + ", " + answerXY[1] + ", " + answerXY[2] + "]";
         document.getElementById("xValue").innerHTML = "x = " + valuesXY[0];
         document.getElementById("yValue").innerHTML = "y = " + valuesXY[1];
-    } else if (dimension == 3) {
+    } else if (dimension === "3") {
         var
             firstXYZ = [parseInt(document.getElementById("xOne").value), parseInt(document.getElementById("yOne").value), parseInt(document.getElementById("zOne").value), parseInt(document.getElementById("equalsOne").value)],
             secondXYZ = [parseInt(document.getElementById("xTwo").value), parseInt(document.getElementById("yTwo").value), parseInt(document.getElementById("zTwo").value), parseInt(document.getElementById("equalsTwo").value)],

@@ -17,7 +17,7 @@
                 <fieldset>
                     <legend>Select mode</legend>
                     <label for="angSize"><input id="angSize" type="radio" name="modeSelect" value="a">Angular Size (𝛼)</label><br>
-                    <label for="realSize"><input id="realSize" type="radio" name="modeSelect" value="D">Real Size (D)</label><br>
+                    <label for="realSize"><input id="realSize" type="radio" name="modeSelect" value="D">Real Size/Diameter (D)</label><br>
                     <label for="distance"><input id="distance" type="radio" name="modeSelect" value="d">Distance (d)</label><br>
                     <input type="button" value="Select" onclick="setUp(modeSelect.value)">
                 </fieldset>
@@ -38,6 +38,10 @@
                     <input type="button" value="Solve" onclick="actionManager(angVal.value, sizeVal.value, distVal.value)">
                 </fieldset>
             </form>
+            <div id="out" class="hidden">
+                <h3 id="title">Answer:</h3>
+                <p id="numOut"></p>
+            </div>
         </main>
         <footer>
             <a href="../" class="footer__text">Home</a>
