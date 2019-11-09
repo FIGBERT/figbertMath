@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>FIGBERT Math - Polygon Size</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../main.css" type="text/css">
+        <script type="text/javascript" src="polycalc.js" async></script>
+    </head>
+    <body>
+        <header>
+            <h1 class="pagetitle">Polygon Angle Calculator</h1>
+            <h2 class="pagetitle pagetitle__sub">by FIGBERT</h2>
+        </header>
+        <main>
+            <form>
+                <fieldset>
+                    <legend>Configure the polygon</legend>
+                    <label for="regular"><input id="regular" type="radio" name="typeSelect" value="0">Regular</label><br>
+                    <label for="irregular"><input id="irregular" type="radio" name="typeSelect" value="1">Irregular CONVEX</label><br>
+                    <label for="sides">Sides: <input id="sides" type="number" step="1" min="3" class="numinput numinput--large"></label><br>
+                    <input type="button" value="Go" onclick="actionManager(typeSelect.value, sides.value)">
+                </fieldset>
+            </form>
+            <div class="hidden" id="out">
+                <h3>Output:</h3>
+                <p id="outText"></p>
+            </div>
+        </main>
+        <footer>
+            <a href="../" class="footer__text">Home</a>
+            <span class="footer__text">&#8226;</span>
+            <a href="../about/" class="footer__text">About</a>
+            <span class="footer__text">&#8226;</span>
+            <a href="../requests/" class="footer__text">Request New Program</a>
+            <span class="footer__text">&#8226;</span>
+            <a href="../submit/" class="footer__text">Submit Code</a>
+        </footer>
+    </body>
+</html>
