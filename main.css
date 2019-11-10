@@ -1,7 +1,7 @@
 body {
     font-family: sans-serif, monospace;
     background-color: #1A181C;
-    margin: 0px;
+    margin: 0;
 }
 
 header {
@@ -10,16 +10,16 @@ header {
     width: 100%;
 }
 
-.pagetitle {
-    margin: 0px;
-    padding: 10px 10px 0px 10px;
+.pageTitle {
+    margin: 0;
+    padding: 10px 10px 0 10px;
     font-size: calc(28px + 0.5vw);
     color: #B494C7;
 }
 
-.pagetitle__sub {
+.pageTitle__sub {
     padding-bottom: 10px;
-    padding-top: 0px;
+    padding-top: 0;
     font-size: calc(20px + 0.25vw);
 }
 
@@ -39,14 +39,14 @@ td {
     color: #ACA0B2;
 }
 
-.numinput {
+.numInput {
     background-color: #8E60A7;
     color: #ACA0B2;
     border-color: #ACA0B2;
     width: 3%;
 }
 
-.numinput--large {
+.numInput--large {
     width: 5%;
 }
 

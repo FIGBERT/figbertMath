@@ -1,7 +1,7 @@
 function errors(type, sides) {
   "use strict";
-  var msg = "",
-    yes = false;
+  let msg = "",
+      yes = false;
   console.log(type);
   if (type !== "0" && type !== "1") {
     msg += "A type is required! Please select one and try again.";
@@ -20,18 +20,18 @@ function errors(type, sides) {
 function actionManager(type, sides) {
   "use strict";
   sides = Math.round(sides);
-  var errorTest = errors(type, sides),
-    msg = "Oops! Something broke.",
-    rounded = "";
+  let errorTest = errors(type, sides),
+      msg = "Oops! Something broke.",
+      rounded = "";
   if (errorTest[0]) {
     msg = errorTest[1];
   } else {
     type = Number(type);
     sides = Number(sides);
-    var totalInterior = (sides - 2) * 180;
+    const totalInterior = (sides - 2) * 180;
     if (type === 0) {
-      var eachInterior = totalInterior / sides,
-        eachExterior = 360 / sides;
+      let eachInterior = totalInterior / sides,
+          eachExterior = 360 / sides;
       if (eachInterior % 1 !== 0) {
         eachInterior = Math.round(eachInterior);
         rounded = "~";

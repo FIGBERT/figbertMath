@@ -1,22 +1,22 @@
-var type;
+let type;
 
 function show(elements) {
   "use strict";
-  for (var a = 0; a < elements.length; a++) {
+  for (let a = 0; a < elements.length; a++) {
     elements[a].style.display = "inline";
   }
 }
 
 function hide(elements) {
   "use strict";
-  for (var a = 0; a < elements.length; a++) {
+  for (let a = 0; a < elements.length; a++) {
     elements[a].style.display = "none";
   }
 }
 
 function reset(elements) {
   "use strict";
-  for (var a = 0; a < elements.length; a++) {
+  for (let a = 0; a < elements.length; a++) {
     elements[a].value = "";
   }
 }
@@ -26,7 +26,7 @@ function setUp(selection) {
   type = selection;
   document.getElementById("sizeIn").style.display = "block";
   hide(document.getElementsByClassName("ins"));
-  reset(document.getElementsByClassName("numinput"));
+  reset(document.getElementsByClassName("numInput"));
   if (type === "a") {
     show(document.getElementsByClassName("a"));
   } else if (type === "D") {
