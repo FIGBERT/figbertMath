@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Tomorrow&display=swap');
+
+#calcOut {
+    background: #ac1a2d;
+    color: rgba(255, 255, 255, .7);
+    font-family: 'Tomorrow', -apple-system, sans-serif;
+    font-size: xx-large;
+    text-align: right;
+    line-height: 75%;
+    padding: 3vh 10vw 3vh 10vw;
+    border: 1vw solid #1d1d1d;
+    border-radius: 1.5vw;
+}
