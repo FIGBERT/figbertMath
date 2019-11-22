@@ -1,9 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Tomorrow&display=swap');
+@font-face {
+    font-family: Tomorrow;
+    src: url("font/Tomorrow-Regular.ttf");
+}
 
-#calcOut {
+.calc {
     background: #ac1a2d;
     color: rgba(255, 255, 255, .7);
-    font-family: 'Tomorrow', -apple-system, sans-serif;
+    font-family: Tomorrow, -apple-system, sans-serif;
+}
+
+.calc__out {
     font-size: xx-large;
     text-align: right;
     line-height: 75%;

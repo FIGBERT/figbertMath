@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { CalcOut } from "./calcOut";
 
 export class App extends React.Component {
   constructor(props) {
@@ -14,11 +15,7 @@ export class App extends React.Component {
   render() {
     return (
         <div>
-          <div id='calcOut'>
-            {this.state.output}
-            <br/>
-            <span style={{fontSize: 'large'}}>{this.state.input}</span>
-          </div>
+          <CalcOut output={this.state.output} input={this.state.input} />
         </div>
     );
   }
