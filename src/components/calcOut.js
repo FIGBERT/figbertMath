@@ -15,6 +15,12 @@ export class CalcOut extends React.Component {
 }
 
 CalcOut.propTypes = {
-    output: PropTypes.number.isRequired,
-    input: PropTypes.number.isRequired
+    output: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]).isRequired,
+    input: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]).isRequired
 };
