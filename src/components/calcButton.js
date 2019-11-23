@@ -2,18 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class CalcButton extends React.Component {
-    buttonFlex = {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        fontSize: '3vw'
-    };
-
     render() {
         return (
-            <div style={this.buttonFlex} className='calc calc__button'>
-                {this.props.value}
-            </div>
+            <button type='button' className='calc calc__button' value={this.props.value}>
+                <span style={{fontSize: '2.5vw'}}>{this.props.value}</span>
+            </button>
         );
     }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { CalcButtonRow } from "./calcButton";
+import { CalcButtonRow } from "../calcButton";
 
 export class BasicPad extends React.Component {
     render() {
