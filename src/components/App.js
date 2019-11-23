@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { CalcOut } from "./calcOut";
-import { BasicPad } from "./calcButton";
+import { BasicPad } from "./calcPads";
 
 export class App extends React.Component {
   constructor(props) {
