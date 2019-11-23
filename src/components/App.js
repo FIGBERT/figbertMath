@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { CalcOut } from "./calcOut";
+import { BasicPad } from "./calcButton";
 
 export class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export class App extends React.Component {
     return (
         <div>
           <CalcOut output={this.state.output} input={this.state.input} />
+          <BasicPad />
         </div>
     );
   }

@@ -1,5 +1,12 @@
+@font-face {
+    font-family: Tomorrow;
+    src: url("components/font/Tomorrow-Regular.ttf");
+}
+
 body {
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+    margin: 2vh 0 0;
     background: #7e1221;
     font-family: -apple-system, sans-serif;
     display: flex;
