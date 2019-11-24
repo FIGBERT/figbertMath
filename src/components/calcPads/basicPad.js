@@ -8,7 +8,7 @@ export class BasicPad extends React.Component {
                 <CalcButtonRow buttonValues={['AC', '±', '%', '÷']} />
                 <CalcButtonRow buttonValues={['4', '5', '6', '–']} />
                 <CalcButtonRow buttonValues={['1', '2', '3', '+']} />
-                <CalcButtonRow buttonValues={['0', '.', '=']} />
+                <CalcButtonRow buttonValues={['…', '0', '.', '=']} />
             </div>
         );
     }
