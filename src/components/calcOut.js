@@ -6,9 +6,8 @@ export class CalcOut extends React.Component {
     render() {
         return (
             <div className='calc calc__out'>
-                {this.props.output}
-                <br/>
-                <span style={{fontSize: 'large'}}>{this.props.input}</span>
+                <div style={{fontSize: '4vmax', marginBottom: '2vmax'}}>{this.props.output}</div>
+                <div style={{fontSize: '1.5vmax'}}>{this.props.input}</div>
             </div>
         );
     }

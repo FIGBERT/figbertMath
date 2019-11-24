@@ -4,11 +4,10 @@
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    margin: 2vh 0 0;
+    overflow: scroll;
+    margin-top: 1.5vmax;
     background: #7e1221;
-    font-family: -apple-system, sans-serif;
+    font-family: Tomorrow, -apple-system, sans-serif;
     display: flex;
     flex-direction: row;
     justify-content: center;
