@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './App.css'
 
 export class CalcOut extends React.Component {
     render() {
@@ -14,12 +13,6 @@ export class CalcOut extends React.Component {
 }
 
 CalcOut.propTypes = {
-    output: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-    ]).isRequired,
-    input: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-    ]).isRequired
+    output: PropTypes.number.isRequired,
+    input: PropTypes.arrayOf(PropTypes.number).isRequired
 };

@@ -12,3 +12,52 @@ body {
     flex-direction: row;
     justify-content: center;
 }
+
+.calc {
+    background: #ac1a2d;
+    color: rgba(255, 255, 255, .7);
+    font-family: Tomorrow, -apple-system, sans-serif;
+}
+
+.calc__out {
+    width: 10vmax;
+    text-align: right;
+    line-height: 50%;
+    padding: 1.5vmax 10vmax 1.5vmax 10vmax;
+    border: 1vmax solid #1d1d1d;
+    border-top-left-radius: 1.5vmax;
+    border-top-right-radius: 1.5vmax;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.calc__pad {
+    background-color: #1d1d1d;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom: 4vmax;
+    border-bottom-left-radius: 1.5vmax;
+    border-bottom-right-radius: 1.5vmax;
+}
+
+.calc__row {
+    background-color: #1d1d1d;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 2vmax;
+}
+
+.calc__button {
+    width: 6vmax;
+    height: 6vmax;
+    font-size: x-large;
+    text-align: center;
+    border-radius: 25%;
+}

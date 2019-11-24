@@ -1,15 +1,14 @@
 import React from 'react';
-import './App.css';
 import { CalcOut } from "./calcOut";
-import { BasicPad } from "./calcPads/basicPad";
+import { Pad } from "./calcPads/pad";
 
 export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       mode: 'basic',
-      output: '000000',
-      input: '0000'
+      output: 0,
+      input: [0]
     };
   }
 
@@ -17,7 +16,7 @@ export class App extends React.Component {
     return (
         <div>
           <CalcOut output={this.state.output} input={this.state.input} />
-          <BasicPad />
+          <Pad mode='basic'/>
         </div>
     );
   }
