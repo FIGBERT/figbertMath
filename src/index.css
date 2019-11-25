@@ -40,7 +40,7 @@ body {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding-bottom: 4vmax;
+    padding-bottom: 3vmax;
     border-bottom-left-radius: 1.5vmax;
     border-bottom-right-radius: 1.5vmax;
 }
@@ -55,8 +55,8 @@ body {
 }
 
 .calc__button {
-    width: 6vmax;
-    height: 6vmax;
+    width: 5vmax;
+    height: 5vmax;
     font-size: x-large;
     text-align: center;
     border-radius: 25%;

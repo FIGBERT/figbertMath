@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export class CalcOut extends React.Component {
+export class BasicOut extends React.Component {
     render() {
         return (
             <div className='calc calc__out'>
@@ -12,7 +12,7 @@ export class CalcOut extends React.Component {
     }
 }
 
-CalcOut.propTypes = {
+BasicOut.propTypes = {
     output: PropTypes.number.isRequired,
-    input: PropTypes.arrayOf(PropTypes.number).isRequired
+    input: PropTypes.string.isRequired
 };

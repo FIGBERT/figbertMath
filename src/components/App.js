@@ -1,23 +1,19 @@
 import React from 'react';
-import { CalcOut } from "./calcOut";
-import { Pad } from "./calcPads/pad";
+import { BasicCalc } from "./basicCalc/basicHandler";
 
 export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mode: 'basic',
-      output: 0,
-      input: [0]
+      mode: 'basic'
     };
   }
 
   render() {
-    return (
-        <div>
-          <CalcOut output={this.state.output} input={this.state.input} />
-          <Pad mode='basic'/>
-        </div>
-    );
+    if (this.state.mode === 'basic') {
+      return <BasicCalc />;
+    } else {
+      return <div />;
+    }
   }
 }
