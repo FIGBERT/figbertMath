@@ -1,5 +1,6 @@
 import React from 'react';
-import { BasicOut } from "./basicOut";
+import PropTypes from 'prop-types';
+import { CalcOut } from "../calcOut";
 import { BasicPad } from "./basicPad";
 
 export class BasicCalc extends React.Component {
@@ -28,9 +29,6 @@ export class BasicCalc extends React.Component {
                 break;
             case '=':
                 this.equate();
-                break;
-            case '…':
-                console.log('Mode switch eventually');
                 break;
             case undefined:
                 console.log("FUCK");
@@ -101,9 +99,16 @@ export class BasicCalc extends React.Component {
     render() {
         return (
             <div>
-                <BasicOut output={this.state.output} input={this.state.input} />
-                <BasicPad onButtonPress={this.onButtonPress}/>
+                <CalcOut
+                    mode={this.props.mode}
+                    output={this.state.output}
+                    input={this.state.input}
+                />
+                <BasicPad onButtonPress={this.onButtonPress} onModeChange={this.props.onModeChange}/>
             </div>
         );
     }
 }
+BasicCalc.propTypes = {
+    mode: PropTypes.string.isRequired
+};

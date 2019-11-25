@@ -9,7 +9,7 @@ export class BasicPad extends React.Component {
                 <BasicButtonRow onButtonPress={this.props.onButtonPress} buttonValues={['7', '8', '9', '×']} />
                 <BasicButtonRow onButtonPress={this.props.onButtonPress} buttonValues={['4', '5', '6', '–']} />
                 <BasicButtonRow onButtonPress={this.props.onButtonPress} buttonValues={['1', '2', '3', '+']} />
-                <BasicButtonRow onButtonPress={this.props.onButtonPress} buttonValues={['…', '0', '.', '=']} />
+                <BasicButtonRow onButtonPress={this.props.onButtonPress} onModeChange={this.props.onModeChange} buttonValues={['…', '0', '.', '=']} />
             </div>
         );
     }
