@@ -85,6 +85,9 @@ export class BasicCalc extends React.Component {
             if (!isNaN(Number(this.state.input.slice(-1)))) {
                 // eslint-disable-next-line
                 final = eval(this.state.input);
+                if (final == null || isNaN(final)) {
+                    final = 'ERROR';
+                }
             } else {
                 final = 'ERROR';
             }
