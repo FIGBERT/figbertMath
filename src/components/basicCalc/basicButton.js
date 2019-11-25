@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class BasicButton extends React.Component {
     render() {
         return (
-            <button type='button' onClick={this.props.onButtonPress} className='calc calc__button' value={this.props.value}>
+            <button type='button' onClick={this.props.onButtonPress} className='calc calc__squareButton' value={this.props.value}>
                 <span style={{fontSize: '2vw'}}>{this.props.value}</span>
             </button>
         );

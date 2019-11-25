@@ -54,7 +54,7 @@ body {
     margin-top: 2vmax;
 }
 
-.calc__button {
+.calc__squareButton {
     width: 5vmax;
     height: 5vmax;
     font-size: x-large;
