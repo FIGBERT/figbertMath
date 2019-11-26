@@ -13,6 +13,17 @@ body {
     justify-content: center;
 }
 
+input {
+    color: rgba(255, 255, 255, .7);
+    border: 0;
+    border-bottom: 0.25vmax solid #7e1221;
+    background: transparent;
+    width: 25vmax;
+    text-align: center;
+    font-size: 1vmax;
+    font-family: Tomorrow, -apple-system, sans-serif;
+}
+
 .calc {
     background: #ac1a2d;
     color: rgba(255, 255, 255, .7);
