@@ -17,6 +17,17 @@ export class LargeButton extends React.Component {
                     {this.props.displayValue}
                 </button>
             );
+        } else if (this.props.value === 'type') {
+            return (
+                <button
+                    type='button'
+                    className={styles.button}
+                    value={this.props.value}
+                    onClick={this.props.onClick}
+                >
+                    {this.props.displayValue}
+                </button>
+            );
         }
         if (canBeDisabled) {
             if (!this.props.disabledTruth) {

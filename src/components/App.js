@@ -2,6 +2,7 @@ import React from 'react';
 import { ModeSelect } from "./highLevel/modeSelect";
 import { SimpleCalc } from "./highLevel/simpleCalc";
 import { AngSizeCalc } from "./highLevel/angSize";
+import { ConsecNumCalc } from "./highLevel/consecNum";
 
 export class App extends React.Component {
   constructor(props) {
@@ -24,6 +25,8 @@ export class App extends React.Component {
       return <SimpleCalc mode={this.state.mode} onModeChange={this.changeMode}/>;
     } else if (this.state.mode === 'angSize') {
       return <AngSizeCalc mode={this.state.mode} onModeChange={this.changeMode}/>;
+    } else if (this.state.mode === 'consecNum') {
+      return <ConsecNumCalc mode={this.state.mode} onModeChange={this.changeMode}/>;
     } else {
       return <ModeSelect mode={this.state.mode} onButtonPress={this.changeMode} />;
     }
