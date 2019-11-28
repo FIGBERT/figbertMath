@@ -1,7 +1,7 @@
 import React from 'react';
-import { ModeSelect } from "./modeSelect/modeSelectHandler";
-import { BasicCalc } from "./basicCalc/basicHandler";
-import { AngSizeCalc } from "./angSize/angSizeHandler";
+import { ModeSelect } from "./complex/modeSelect";
+import { SimpleCalc } from "./complex/simpleCalc";
+import { AngSizeCalc } from "./complex/angSize";
 
 export class App extends React.Component {
   constructor(props) {
@@ -20,13 +20,12 @@ export class App extends React.Component {
   }
 
   render() {
-    switch (this.state.mode) {
-      case 'basic':
-        return <BasicCalc mode={this.state.mode} onModeChange={this.changeMode} />;
-      case 'angSize':
-        return <AngSizeCalc mode={this.state.mode} onModeChange={this.changeMode}/>;
-      default:
-        return <ModeSelect mode={this.state.mode} onButtonPress={this.changeMode} />;
+    if (this.state.mode === 'basic') {
+      return <SimpleCalc mode={this.state.mode} onModeChange={this.changeMode}/>;
+    } else if (this.state.mode === 'angSize') {
+      return <AngSizeCalc mode={this.state.mode} onModeChange={this.changeMode}/>;
+    } else {
+      return <ModeSelect mode={this.state.mode} onButtonPress={this.changeMode} />;
     }
   }
 }

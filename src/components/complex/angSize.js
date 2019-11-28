@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CalcOut } from "../calcOut";
-import { AngSizePad } from "./angSizePad";
+import { CalcOut } from "../simple/calcOut";
+import { Pad } from "../simple/pad";
 
 export class AngSizeCalc extends React.Component {
     constructor(props) {
@@ -73,24 +73,29 @@ export class AngSizeCalc extends React.Component {
         const value = object.target.value,
             name = object.target.name;
         if (name === '⍺') {
-            this.setState({
-                aVal: value
+            this.setState({ aVal: value }, () => {
+                if (this.state.rTruth) {
+                    this.calcDistance()
+                } else if (this.state.dTruth) {
+                    this.calcSize()
+                }
             });
         } else if (name === 'r') {
-            this.setState({
-                rVal: value
+            this.setState({ rVal: value }, () => {
+                if (this.state.aTruth) {
+                    this.calcDistance()
+                } else if (this.state.dTruth) {
+                    this.calcAngle()
+                }
             });
         } else if (name === 'd') {
-            this.setState({
-                dVal: value
+            this.setState({ dVal: value }, () => {
+                if (this.state.aTruth) {
+                    this.calcSize()
+                } else if (this.state.rTruth) {
+                    this.calcAngle()
+                }
             });
-        }
-        if (this.state.aTruth && this.state.rTruth) {
-            this.calcDistance()
-        } else if (this.state.aTruth && this.state.dTruth) {
-            this.calcSize()
-        } else if (this.state.rTruth && this.state.dTruth) {
-            this.calcAngle()
         }
     }
 
@@ -128,16 +133,16 @@ export class AngSizeCalc extends React.Component {
         return (
             <div>
                 <CalcOut mode={this.props.mode} output={this.state.output} />
-                <AngSizePad
-                    aVal={this.state.aVal}
-                    aTruth={this.state.aTruth}
-                    rVal={this.state.rVal}
-                    rTruth={this.state.rTruth}
-                    dVal={this.state.dVal}
-                    dTruth={this.state.dTruth}
-                    onChange={this.onChange}
+                <Pad
+                    type={'large'}
+                    mode={this.props.mode}
+                    buttonValues={['⍺', 'r', 'd', 'select']}
+                    disabledTruths={[this.state.aTruth, this.state.rTruth, this.state.dTruth]}
+                    displayValues={['⍺', 'r', 'd', '…']}
+                    textValues={[this.state.aVal, this.state.rVal, this.state.dVal]}
                     onClick={this.onClick}
-                    onModeChange={this.props.onModeChange}
+                    onChange={this.onChange}
+                    onModeClick={this.props.onModeChange}
                 />
             </div>
         );

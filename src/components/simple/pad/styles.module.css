@@ -1,0 +1,11 @@
+.pad {
+    background: #1d1d1d;
+    font-family: Tomorrow, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom: 3vmax;
+    border-bottom-left-radius: 1.5vmax;
+    border-bottom-right-radius: 1.5vmax;
+}

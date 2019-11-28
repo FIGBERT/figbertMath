@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CalcOut } from "../calcOut";
-import { BasicPad } from "./basicPad";
+import { CalcOut } from "../simple/calcOut";
+import { Pad } from "../simple/pad";
 
-export class BasicCalc extends React.Component {
+const buttonValues = [
+    ['AC', 'DEL', '%', '÷'],
+    ['7', '8', '9', '×'],
+    ['4', '5', '6', '–'],
+    ['1', '2', '3', '+'],
+    ['…', '0', '.', '=']
+];
+
+export class SimpleCalc extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,7 +39,6 @@ export class BasicCalc extends React.Component {
                 this.equate();
                 break;
             case undefined:
-                console.log("FUCK");
                 break;
             default:
                 this.addDigit(value);
@@ -107,11 +114,17 @@ export class BasicCalc extends React.Component {
                     output={this.state.output}
                     input={this.state.input}
                 />
-                <BasicPad onButtonPress={this.onButtonPress} onModeChange={this.props.onModeChange}/>
+                <Pad
+                    type={'small'}
+                    buttonValues={buttonValues}
+                    onClick={this.onButtonPress}
+                    onModeClick={this.props.onModeChange}
+                />
             </div>
         );
     }
 }
-BasicCalc.propTypes = {
-    mode: PropTypes.string.isRequired
+SimpleCalc.propTypes = {
+    mode: PropTypes.string.isRequired,
+    onModeChange: PropTypes.func
 };

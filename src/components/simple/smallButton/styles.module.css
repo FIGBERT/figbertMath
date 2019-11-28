@@ -1,0 +1,22 @@
+.button {
+    background: #ac1a2d;
+    color: rgba(255, 255, 255, .7);
+    font-family: Tomorrow, -apple-system, sans-serif;
+    width: 5vmax;
+    height: 5vmax;
+    margin-top: 0.5vmax;
+    margin-left: 1vmax;
+    margin-right: 1vmax;
+    font-size: 2vmax;
+    text-align: center;
+    border-radius: 25%;
+}
+
+.buttonRow {
+    background: #1d1d1d;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 1vmax;
+}
