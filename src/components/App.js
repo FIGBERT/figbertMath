@@ -1,7 +1,7 @@
 import React from 'react';
-import { ModeSelect } from "./complex/modeSelect";
-import { SimpleCalc } from "./complex/simpleCalc";
-import { AngSizeCalc } from "./complex/angSize";
+import { ModeSelect } from "./highLevel/modeSelect";
+import { SimpleCalc } from "./highLevel/simpleCalc";
+import { AngSizeCalc } from "./highLevel/angSize";
 
 export class App extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CalcOut } from "../simple/calcOut";
-import { Pad } from "../simple/pad";
+import { CalcOut } from "../lowLevel/calcOut";
+import { Pad } from "../lowLevel/pad";
 
 export class AngSizeCalc extends React.Component {
     constructor(props) {

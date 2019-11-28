@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CalcOut } from "../simple/calcOut";
-import { Pad } from "../simple/pad";
+import { CalcOut } from "../lowLevel/calcOut";
+import { Pad } from "../lowLevel/pad";
 
 const values = ['basic', 'angSize', 'consecNum', 'simultaneousEQ', 'polyAng'],
     displayValues = ['Simple Calculator', 'Angular/Real Size', 'Consecutive Number', 'Simultaneous Equations', 'Polygon Angles'];
