@@ -79,6 +79,7 @@ export class PolygonAngle extends React.Component {
                 <CalcOut mode={this.props.mode} output={this.state.output} />
                 <Pad
                     type={'large'}
+                    mode={this.props.mode}
                     buttonValues={['type', 'sides', 'select']}
                     displayValues={[this.state.type, '# of sides', '…']}
                     textValues={[this.state.sides]}

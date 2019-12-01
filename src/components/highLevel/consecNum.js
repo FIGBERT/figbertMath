@@ -119,6 +119,7 @@ export class ConsecNumCalc extends React.Component {
                 <CalcOut mode={this.props.mode} output={this.state.output} />
                 <Pad
                     type={'large'}
+                    mode={this.props.mode}
                     buttonValues={['amount', 'sum', 'type', 'select']}
                     displayValues={['Amount', 'Sum', this.state.type, '…']}
                     textValues={[this.state.amount, this.state.sum]}
