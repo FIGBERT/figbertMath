@@ -4,8 +4,7 @@ import styles from './styles.module.css';
 
 export class LargeButton extends React.Component {
     render() {
-        const equationForm = this.props.mode === 'simultaneousEQ',
-            canBeDisabled = this.props.mode === 'angSize',
+        const canBeDisabled = this.props.mode === 'angSize',
             acceptsInput = this.props.mode !== 'select';
         if (this.props.value === 'select') {
             return (
@@ -30,123 +29,7 @@ export class LargeButton extends React.Component {
                 </button>
             );
         }
-        if (equationForm) {
-            if (this.props.displayValue === '2') {
-                return (
-                    <div className={styles.EQButton}>
-                        <span className={styles.closeText}>
-                            <input
-                                type='number'
-                                name={this.props.value[0]}
-                                value={this.props.textValue[0]}
-                                onChange={this.props.onChange}
-                            />
-                            x
-                        </span> +
-                        <span className={styles.closeText}>
-                            <input
-                                type='number'
-                                name={this.props.value[1]}
-                                value={this.props.textValue[1]}
-                                onChange={this.props.onChange}
-                            />
-                            y
-                        </span> =
-                        <input
-                            type='number'
-                            name={this.props.value[2]}
-                            value={this.props.textValue[2]}
-                            onChange={this.props.onChange}
-                        />
-                    </div>
-                );
-            } else if (this.props.displayValue === '3') {
-                return (
-                    <div className={styles.EQButton}>
-                        <span className={styles.closeText}>
-                            <input
-                                type='number'
-                                name={this.props.value[0]}
-                                value={this.props.textValue[0]}
-                                onChange={this.props.onChange}
-                            />
-                            x
-                        </span> +
-                        <span className={styles.closeText}>
-                            <input
-                                type='number'
-                                name={this.props.value[1]}
-                                value={this.props.textValue[1]}
-                                onChange={this.props.onChange}
-                            />
-                            y
-                        </span> +
-                        <span className={styles.closeText}>
-                            <input
-                                type='number'
-                                name={this.props.value[2]}
-                                value={this.props.textValue[2]}
-                                onChange={this.props.onChange}
-                            />
-                            z
-                        </span> =
-                        <input
-                            type='number'
-                            name={this.props.value[3]}
-                            value={this.props.textValue[3]}
-                            onChange={this.props.onChange}
-                        />
-                    </div>
-                );
-            } else if (this.props.displayValue === '4') {
-                return (
-                    <div className={styles.EQButton}>
-                        <span className={styles.closeText}>
-                            <input
-                                type='number'
-                                name={this.props.value[0]}
-                                value={this.props.textValue[0]}
-                                onChange={this.props.onChange}
-                            />
-                            w
-                        </span> +
-                        <span className={styles.closeText}>
-                            <input
-                                type='number'
-                                name={this.props.value[1]}
-                                value={this.props.textValue[1]}
-                                onChange={this.props.onChange}
-                            />
-                            x
-                        </span> +
-                        <span className={styles.closeText}>
-                            <input
-                                type='number'
-                                name={this.props.value[2]}
-                                value={this.props.textValue[2]}
-                                onChange={this.props.onChange}
-                            />
-                            y
-                        </span> +
-                        <span className={styles.closeText}>
-                            <input
-                                type='number'
-                                name={this.props.value[3]}
-                                value={this.props.textValue[3]}
-                                onChange={this.props.onChange}
-                            />
-                            z
-                        </span> =
-                        <input
-                            type='number'
-                            name={this.props.value[4]}
-                            value={this.props.textValue[4]}
-                            onChange={this.props.onChange}
-                        />
-                    </div>
-                );
-            }
-        } else if (canBeDisabled) {
+        if (canBeDisabled) {
             if (!this.props.disabledTruth) {
                 return (
                     <button className={styles.disabled} value={this.props.value} onClick={this.props.onClick}>

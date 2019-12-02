@@ -44,32 +44,3 @@ input {
     justify-content: space-evenly;
     align-items: center;
 }
-
-.EQButton {
-    background: #ac1a2d;
-    color: rgba(255, 255, 255, .7);
-    font-family: Tomorrow, -apple-system, sans-serif;
-    width: 30vmax;
-    height: 5vmax;
-    margin-top: 1vmax;
-    margin-left: 1vmax;
-    margin-right: 1vmax;
-    font-size: 2vmax;
-    text-align: center;
-    border-radius: 1vmax;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.EQButton input {
-    width: 2vmax;
-}
-
-.closeText {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
