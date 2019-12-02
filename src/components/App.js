@@ -4,6 +4,7 @@ import { SimpleCalc } from "./highLevel/simpleCalc";
 import { AngSizeCalc } from "./highLevel/angSize";
 import { ConsecNumCalc } from "./highLevel/consecNum";
 import { PolygonAngle } from "./highLevel/polygonAngle";
+import { SimultaneousEquation } from "./highLevel/simultaneousEquation";
 
 export class App extends React.Component {
   constructor(props) {
@@ -30,6 +31,8 @@ export class App extends React.Component {
       return <ConsecNumCalc mode={this.state.mode} onModeChange={this.changeMode}/>;
     } else if (this.state.mode === 'polyAng') {
       return <PolygonAngle mode={this.state.mode} onModeChange={this.changeMode} />;
+    } else if (this.state.mode === 'simultaneousEQ') {
+      return <SimultaneousEquation mode={this.state.mode} onModeChange={this.changeMode} />;
     } else {
       return <ModeSelect mode={this.state.mode} onButtonPress={this.changeMode} />;
     }

@@ -13,7 +13,7 @@ export class Pad extends React.Component {
             disabledTruths = this.props.disabledTruths,
             displayValues = this.props.displayValues,
             textValues = this.props.textValues;
-        let rows = [];
+        let rows;
         if (this.props.type === 'small') {
             rows = this.props.buttonValues.map(function (array, index, _) {
                 return <SmallButtonRow
@@ -52,7 +52,7 @@ Pad.propTypes = {
         PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
         PropTypes.arrayOf(PropTypes.string)
     ]).isRequired,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     mode: PropTypes.string,
     onChange: PropTypes.func,
     onModeClick: PropTypes.func,
