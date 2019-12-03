@@ -9,7 +9,7 @@ input {
     font-family: Tomorrow, -apple-system, sans-serif;
 }
 
-.button {
+.columnButton {
     background: #ac1a2d;
     color: rgba(255, 255, 255, .7);
     font-family: Tomorrow, -apple-system, sans-serif;
@@ -43,4 +43,30 @@ input {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.rowButton {
+    background: #ac1a2d;
+    color: rgba(255, 255, 255, .7);
+    font-family: Tomorrow, -apple-system, sans-serif;
+    width: 30vmax;
+    height: 5vmax;
+    margin-top: 1vmax;
+    margin-left: 1vmax;
+    margin-right: 1vmax;
+    font-size: 2vmax;
+    text-align: center;
+    border-radius: 1vmax;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.transparentButton {
+    background: transparent;
+    color: rgba(255, 255, 255, .7);
+    font-family: Tomorrow, -apple-system, sans-serif;
+    border: 0;
+    font-size: 4vmax;
 }

@@ -10,7 +10,7 @@ export class LargeButton extends React.Component {
             return (
                 <button
                     type='button'
-                    className={styles.button}
+                    className={styles.columnButton}
                     value={this.props.value}
                     onClick={this.props.onModeClick}
                 >
@@ -21,12 +21,34 @@ export class LargeButton extends React.Component {
             return (
                 <button
                     type='button'
-                    className={styles.button}
+                    className={styles.columnButton}
                     value={this.props.value}
                     onClick={this.props.onClick}
                 >
                     {this.props.displayValue}
                 </button>
+            );
+        } else if (this.props.value === 'range') {
+            return (
+                <div className={styles.rowButton}>
+                    <button
+                        type='button'
+                        className={styles.transparentButton}
+                        value='raise'
+                        onClick={this.props.onClick}
+                    >
+                        +
+                    </button>
+                    {this.props.displayValue}
+                    <button
+                        type='button'
+                        className={styles.transparentButton}
+                        value='lower'
+                        onClick={this.props.onClick}
+                    >
+                        -
+                    </button>
+                </div>
             );
         }
         if (canBeDisabled) {
@@ -45,7 +67,7 @@ export class LargeButton extends React.Component {
                 );
             } else {
                 return (
-                    <button className={styles.button} value={this.props.value} onClick={this.props.onClick}>
+                    <button className={styles.columnButton} value={this.props.value} onClick={this.props.onClick}>
                         {this.props.displayValue} =
                         <input
                             type='number'
@@ -58,7 +80,7 @@ export class LargeButton extends React.Component {
             }
         } else if (acceptsInput) {
             return (
-                <div className={styles.button}>
+                <div className={styles.columnButton}>
                     {this.props.displayValue} =
                     <input
                         type='number'
@@ -72,7 +94,7 @@ export class LargeButton extends React.Component {
             return (
                 <button
                     type='button'
-                    className={styles.button}
+                    className={styles.columnButton}
                     value={this.props.value}
                     onClick={this.props.onClick}
                 >
