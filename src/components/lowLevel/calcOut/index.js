@@ -18,17 +18,37 @@ export class CalcOut extends React.Component {
                 </div>
             );
         } else {
-            return (
-                <div className={styles.out}>
-                    <span className={styles.h2}>{this.props.output}</span>
-                </div>
-            );
+            if (typeof this.props.output !== 'object') {
+                return (
+                    <div className={styles.out}>
+                        <span className={styles.h2}>{this.props.output}</span>
+                    </div>
+                );
+            } else {
+                let outputBreaks = [];
+                for (let i = 0; i < this.props.output.length; i++) {
+                    if (i + 1 === this.props.output.length) {
+                        outputBreaks.push(this.props.output[i])
+                    } else {
+                        outputBreaks.push(this.props.output[i], <br />)
+                    }
+                }
+                return (
+                    <div className={styles.out}>
+                        <span className={styles.h2}>{outputBreaks}</span>
+                    </div>
+                );
+            }
         }
     }
 }
 
 CalcOut.propTypes = {
     mode: PropTypes.string.isRequired,
-    output: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    output: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+        PropTypes.array
+    ]),
     input: PropTypes.string
 };

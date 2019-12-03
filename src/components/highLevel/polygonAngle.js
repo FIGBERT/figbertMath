@@ -63,7 +63,7 @@ export class PolygonAngle extends React.Component {
                     eachExterior = '~' + Math.round(eachExterior);
                 }
                 this.setState({
-                    output: 'Total Interior: ' + totalInterior + '°\nEach Interior: ' + eachInterior + '°\nEach Exterior: ' + eachExterior + '°'
+                    output: ['Total Interior: ' + totalInterior + '°', 'Each Interior: ' + eachInterior + '°', 'Each Exterior: ' + eachExterior + '°']
                 })
             } else {
                 this.setState({
