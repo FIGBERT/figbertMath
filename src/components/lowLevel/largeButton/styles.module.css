@@ -9,6 +9,10 @@ input {
     font-family: Tomorrow, -apple-system, sans-serif;
 }
 
+.smallInput {
+    width: 2vmax;
+}
+
 .columnButton {
     background: #ac1a2d;
     color: rgba(255, 255, 255, .7);

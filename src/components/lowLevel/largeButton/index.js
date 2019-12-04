@@ -5,7 +5,8 @@ import styles from './styles.module.css';
 export class LargeButton extends React.Component {
     render() {
         const canBeDisabled = this.props.mode === 'angSize',
-            acceptsInput = this.props.mode !== 'select';
+            acceptsInput = this.props.mode !== 'select',
+            equationFormat = this.props.mode === 'simultaneousEQ';
         if (this.props.value === 'select') {
             return (
                 <button
@@ -78,6 +79,56 @@ export class LargeButton extends React.Component {
                     </button>
                 );
             }
+        } else if (equationFormat) {
+            const alphabet = (function(charA, charZ) {
+                let a = [], i = charA.charCodeAt(0), j = charZ.charCodeAt(0);
+                for (; i <= j; ++i) {
+                    a.push(String.fromCharCode(i));
+                }
+                return a;
+            }('a', 'z'));
+            let coefficients = this.props.value[0],
+                sums = this.props.value[1],
+                buttons = [];
+            for (let i = 0; i < coefficients.length; i++) {
+                let eq = [];
+                for (let k = 0; k < coefficients[i].length; k++) {
+                    const name = 'c' + i + '_' + k;
+                    eq.push(
+                        <div>
+                            <input
+                                type='number'
+                                className={styles.smallInput}
+                                name={name}
+                                value={coefficients[i][k]}
+                                onChange={this.props.onChange}
+                            />
+                            {alphabet[k]}
+                        </div>
+                    );
+                    if (k + 1 !== coefficients[i].length) { eq.push('+') }
+                }
+                eq.push(
+                    '=',
+                    <input
+                        type='number'
+                        className={styles.smallInput}
+                        name={'s' + i}
+                        value={sums[i]}
+                        onChange={this.props.onChange}
+                    />
+                );
+                buttons.push(
+                    <div className={styles.rowButton}>
+                        {eq}
+                    </div>
+                )
+            }
+            return (
+                <div>
+                    {buttons}
+                </div>
+            );
         } else if (acceptsInput) {
             return (
                 <div className={styles.columnButton}>
@@ -111,7 +162,13 @@ LargeButton.propTypes = {
     onChange: PropTypes.func,
     onModeClick: PropTypes.func,
     disabledTruth: PropTypes.bool,
-    value: PropTypes.string,
-    displayValue: PropTypes.string,
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.array
+    ]),
+    displayValue: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]),
     textValue: PropTypes.string
 };

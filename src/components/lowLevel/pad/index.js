@@ -31,9 +31,9 @@ export class Pad extends React.Component {
                         onClick={onClick}
                         onChange={onChange}
                         onModeClick={onModeClick}
-                        disabledTruth={disabledTruths == null ? false : disabledTruths[index]}
                         value={value}
-                        displayValue={displayValues[index]}
+                        disabledTruth={disabledTruths == null ? false : disabledTruths[index]}
+                        displayValue={displayValues == null ? '' : displayValues[index]}
                         textValue={textValues == null ? '' : textValues[index]}
                     />
                 );
@@ -48,15 +48,12 @@ export class Pad extends React.Component {
 }
 Pad.propTypes = {
     type: PropTypes.string.isRequired,
-    buttonValues: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
-        PropTypes.arrayOf(PropTypes.string)
-    ]).isRequired,
+    buttonValues: PropTypes.array.isRequired,
     onClick: PropTypes.func,
     mode: PropTypes.string,
     onChange: PropTypes.func,
     onModeClick: PropTypes.func,
     disabledTruths: PropTypes.arrayOf(PropTypes.bool),
-    displayValues: PropTypes.arrayOf(PropTypes.string),
+    displayValues: PropTypes.array,
     textValues: PropTypes.arrayOf(PropTypes.string)
 };
