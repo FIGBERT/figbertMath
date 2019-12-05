@@ -5,8 +5,8 @@ A calculator for miscellaneous formulas I encounter that can, and thus shall, be
 * Simple Calculator
 * Angular/Real Size Calculator
 * Consecutive Number Calculator
+* Simultaneous Equation Calculator
 * Polygon Angle Calculator
 
 ## Planned
-* Simultaneous Equation Calculator
 * Forces and Energy Calculator

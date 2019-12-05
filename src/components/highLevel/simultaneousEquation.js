@@ -13,6 +13,7 @@ export class SimultaneousEquation extends React.Component {
             coefficients: [['', ''], ['', '']],
             sums: ['', '']
         };
+        this.checkSolve = this.checkSolve.bind(this);
         this.modifyMatrix = this.modifyMatrix.bind(this);
         this.solveMatrix = this.solveMatrix.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -28,11 +29,15 @@ export class SimultaneousEquation extends React.Component {
             k = Number(name.split('_')[1]);
             this.setState({
                 coefficients: update(this.state.coefficients, {[i]: {[k]: {$set: value}}})
+            }, () => {
+                this.checkSolve()
             });
         } else if (name.indexOf('s') > -1) {
             i = Number(name.substr(1));
             this.setState({
                 sums: update(this.state.sums, {[i]: {$set: value}})
+            }, () => {
+                this.checkSolve()
             });
         } else {
             this.setState({
@@ -41,6 +46,32 @@ export class SimultaneousEquation extends React.Component {
         }
     }
 
+    checkSolve() {
+        const coefficients = JSON.parse(JSON.stringify(this.state.coefficients)),
+            sums = JSON.parse(JSON.stringify(this.state.sums));
+        let truth = true;
+        for (let i = 0; i < coefficients.length; i++) {
+            for (let k = 0; k < coefficients[i].length; k ++) {
+                if (coefficients[i][k] === '') {
+                    truth = false;
+                } else {
+                    coefficients[i][k] = Number(coefficients[i][k]);
+                }
+            }
+        }
+        if (truth) {
+            for (let i = 0; i < sums.length; i++) {
+                if (sums[i] === '') {
+                    truth = false;
+                } else {
+                    sums[i] = Number(sums[i]);
+                }
+            }
+        }
+        if (truth) {
+            this.solveMatrix(coefficients, sums)
+        }
+    }
 
     modifyMatrix(object) {
         const value = object.target.value;
