@@ -158,6 +158,21 @@ export class SimultaneousEquation extends React.Component {
             }
         }
 
+        //Round each number to four decimal places
+        const alphabet = (function(charA, charZ) {
+            let a = [], i = charA.charCodeAt(0), j = charZ.charCodeAt(0);
+            for (; i <= j; ++i) {
+                a.push(String.fromCharCode(i));
+            }
+            return a;
+        }('a', 'z'));
+        for (let i = 0; i < sums.length; i++) {
+          if (sums[i] % 1 !== 0) {
+            sums[i] = Math.round((sums[i] + 0.00001) * 100) / 100;
+          }
+          sums[i] = alphabet[i] + ' = ' + sums[i];
+        }
+
         //Set the output to the array of values
         this.setState({
             output: sums
