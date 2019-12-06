@@ -81,6 +81,9 @@ export class SimultaneousEquation extends React.Component {
             newDimension;
         if (value === 'raise') {
             newDimension = this.state.dimension + 1;
+            if (newDimension > 5) {
+                newDimension = 5;
+            }
         } else if (value === 'lower') {
             newDimension = this.state.dimension - 1;
             if (newDimension < 2) {
@@ -95,6 +98,7 @@ export class SimultaneousEquation extends React.Component {
             rows.push(numOfVars);
         }
         this.setState({
+            output: [],
             dimension: newDimension,
             coefficients: rows,
             sums: sums
