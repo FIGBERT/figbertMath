@@ -1,9 +1,9 @@
 import React from 'react';
-import { ModeSelect } from "./highLevel/modeSelect";
-import { SimpleCalc } from "./highLevel/simpleCalc";
 import { AngSizeCalc } from "./highLevel/angSize";
 import { ConsecNumCalc } from "./highLevel/consecNum";
+import { ModeSelect } from "./highLevel/modeSelect";
 import { PolygonAngle } from "./highLevel/polygonAngle";
+import { SimpleCalc } from "./highLevel/simpleCalc";
 import { SimultaneousEquation } from "./highLevel/simultaneousEquation";
 
 export class App extends React.Component {
