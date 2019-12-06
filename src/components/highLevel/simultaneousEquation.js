@@ -15,35 +15,8 @@ export class SimultaneousEquation extends React.Component {
         };
         this.checkSolve = this.checkSolve.bind(this);
         this.modifyMatrix = this.modifyMatrix.bind(this);
-        this.solveMatrix = this.solveMatrix.bind(this);
         this.onChange = this.onChange.bind(this);
-    }
-
-    onChange(object) {
-        let name = object.target.name,
-            i, k;
-        const value = object.target.value;
-        if (name.indexOf('c') > -1) {
-            name = name.substr(1);
-            i = Number(name.split('_')[0]);
-            k = Number(name.split('_')[1]);
-            this.setState({
-                coefficients: update(this.state.coefficients, {[i]: {[k]: {$set: value}}})
-            }, () => {
-                this.checkSolve()
-            });
-        } else if (name.indexOf('s') > -1) {
-            i = Number(name.substr(1));
-            this.setState({
-                sums: update(this.state.sums, {[i]: {$set: value}})
-            }, () => {
-                this.checkSolve()
-            });
-        } else {
-            this.setState({
-                output: 'ERROR'
-            });
-        }
+        this.solveMatrix = this.solveMatrix.bind(this);
     }
 
     checkSolve() {
@@ -103,6 +76,33 @@ export class SimultaneousEquation extends React.Component {
             coefficients: rows,
             sums: sums
         });
+    }
+
+    onChange(object) {
+        let name = object.target.name,
+            i, k;
+        const value = object.target.value;
+        if (name.indexOf('c') > -1) {
+            name = name.substr(1);
+            i = Number(name.split('_')[0]);
+            k = Number(name.split('_')[1]);
+            this.setState({
+                coefficients: update(this.state.coefficients, {[i]: {[k]: {$set: value}}})
+            }, () => {
+                this.checkSolve()
+            });
+        } else if (name.indexOf('s') > -1) {
+            i = Number(name.substr(1));
+            this.setState({
+                sums: update(this.state.sums, {[i]: {$set: value}})
+            }, () => {
+                this.checkSolve()
+            });
+        } else {
+            this.setState({
+                output: 'ERROR'
+            });
+        }
     }
 
     solveMatrix(equations, sums) {
@@ -188,13 +188,13 @@ export class SimultaneousEquation extends React.Component {
             <div>
                 <CalcOut mode={this.props.mode} output={this.state.output} />
                 <Pad
-                    type={'large'}
-                    mode={this.props.mode}
                     buttonValues={['range', [this.state.coefficients, this.state.sums], 'select']}
                     displayValues={[this.state.dimension, undefined, '…']}
-                    onClick={this.modifyMatrix}
+                    mode={this.props.mode}
                     onChange={this.onChange}
+                    onClick={this.modifyMatrix}
                     onModeClick={this.props.onModeChange}
+                    type={'large'}
                 />
             </div>
         );

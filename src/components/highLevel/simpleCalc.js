@@ -19,30 +19,11 @@ export class SimpleCalc extends React.Component {
             input: '',
             justSolved: false
         };
-        this.onButtonPress = this.onButtonPress.bind(this);
         this.addDigit = this.addDigit.bind(this);
-        this.equate = this.equate.bind(this);
-        this.delete = this.delete.bind(this);
         this.clear = this.clear.bind(this);
-    }
-
-    onButtonPress(object) {
-        let value = object.target.value;
-        switch (value) {
-            case 'AC':
-                this.clear();
-                break;
-            case 'DEL':
-                this.delete();
-                break;
-            case '=':
-                this.equate();
-                break;
-            case undefined:
-                break;
-            default:
-                this.addDigit(value);
-        }
+        this.delete = this.delete.bind(this);
+        this.equate = this.equate.bind(this);
+        this.onButtonPress = this.onButtonPress.bind(this);
     }
 
     addDigit(buttonVal) {
@@ -73,16 +54,16 @@ export class SimpleCalc extends React.Component {
         });
     }
 
-    delete() {
-        this.setState({
-            input: this.state.input.slice(0,-1)
-        });
-    }
-
     clear() {
         this.setState({
             output: 0,
             input: ''
+        });
+    }
+
+    delete() {
+        this.setState({
+            input: this.state.input.slice(0,-1)
         });
     }
 
@@ -106,6 +87,25 @@ export class SimpleCalc extends React.Component {
         }
     }
 
+    onButtonPress(object) {
+        let value = object.target.value;
+        switch (value) {
+            case 'AC':
+                this.clear();
+                break;
+            case 'DEL':
+                this.delete();
+                break;
+            case '=':
+                this.equate();
+                break;
+            case undefined:
+                break;
+            default:
+                this.addDigit(value);
+        }
+    }
+
     render() {
         return (
             <div>
@@ -115,10 +115,10 @@ export class SimpleCalc extends React.Component {
                     input={this.state.input}
                 />
                 <Pad
-                    type={'small'}
                     buttonValues={buttonValues}
                     onClick={this.onButtonPress}
                     onModeClick={this.props.onModeChange}
+                    type={'small'}
                 />
             </div>
         );
