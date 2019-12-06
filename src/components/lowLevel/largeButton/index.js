@@ -4,9 +4,9 @@ import styles from './styles.module.css';
 
 export class LargeButton extends React.Component {
     render() {
-        const canBeDisabled = this.props.mode === 'angSize',
-            acceptsInput = this.props.mode !== 'select',
-            equationFormat = this.props.mode === 'simultaneousEQ';
+        const acceptsInput = this.props.mode !== 'select',
+            equationFormat = this.props.mode === 'simultaneousEQ',
+            canBeDisabled = this.props.mode === 'angSize';
         if (this.props.value === 'select') {
             return (
                 <button
@@ -157,18 +157,18 @@ export class LargeButton extends React.Component {
 }
 
 LargeButton.propTypes = {
-    mode: PropTypes.string.isRequired,
-    onClick: PropTypes.func,
-    onChange: PropTypes.func,
-    onModeClick: PropTypes.func,
     disabledTruth: PropTypes.bool,
-    value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.array
-    ]),
     displayValue: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
     ]),
-    textValue: PropTypes.string
+    mode: PropTypes.string.isRequired,
+    onChange: PropTypes.func,
+    onClick: PropTypes.func,
+    onModeClick: PropTypes.func,
+    textValue: PropTypes.string,
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.array
+    ])
 };

@@ -6,13 +6,13 @@ import styles from './styles.module.css';
 
 export class Pad extends React.Component {
     render() {
-        const mode = this.props.mode,
-            onClick = this.props.onClick,
-            onChange = this.props.onChange,
-            onModeClick = this.props.onModeClick,
-            disabledTruths = this.props.disabledTruths,
+        const disabledTruths = this.props.disabledTruths,
             displayValues = this.props.displayValues,
-            textValues = this.props.textValues;
+            onChange = this.props.onChange,
+            onClick = this.props.onClick,
+            onModeClick = this.props.onModeClick,
+            textValues = this.props.textValues,
+            mode = this.props.mode;
         let rows;
         if (this.props.type === 'small') {
             rows = this.props.buttonValues.map(function (array, index, _) {
@@ -27,14 +27,14 @@ export class Pad extends React.Component {
             rows = this.props.buttonValues.map(function (value, index, _) {
                 return (
                     <LargeButton
-                        mode={mode}
-                        onClick={onClick}
-                        onChange={onChange}
-                        onModeClick={onModeClick}
-                        value={value}
                         disabledTruth={disabledTruths == null ? false : disabledTruths[index]}
                         displayValue={displayValues == null ? '' : displayValues[index]}
+                        mode={mode}
+                        onChange={onChange}
+                        onClick={onClick}
+                        onModeClick={onModeClick}
                         textValue={textValues == null ? '' : textValues[index]}
+                        value={value}
                     />
                 );
             });
