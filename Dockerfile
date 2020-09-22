@@ -1,10 +1,9 @@
-FROM alpine as builder
+FROM node:alpine as builder
 
 WORKDIR /home/site
 COPY . .
 
-RUN apk --no-cache add npm \
-    && npm install --production \
+RUN npm install --production \
     && npm run build
 
 FROM nginx:alpine
