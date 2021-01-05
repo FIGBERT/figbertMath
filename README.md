@@ -1,5 +1,7 @@
 # FIGBERT Math
-A calculator for miscellaneous formulas I encounter that can, and thus shall, be automated.
+
+A calculator for miscellaneous formulas I encounter that can, and thus shall,
+be automated.
 
 ## Complete
 * Simple Calculator
@@ -10,3 +12,4 @@ A calculator for miscellaneous formulas I encounter that can, and thus shall, be
 
 ## Planned
 * Forces and Energy Calculator
+
